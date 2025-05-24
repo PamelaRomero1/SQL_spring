@@ -56,9 +56,15 @@ public class AlumnoController {
             return ResponseEntity.status(200).body(alumno);
         }
 
-        @GetMapping("/api/v1/alumnos/{nombre}")
-        public ResponseEntity<?> buscarAlumnoPorNombre(@PathVariable String nombres) {
-            List<Alumno> alumnos = alumnoService.findByNombres(nombres);
+        @GetMapping("/api/v1/alumnos/Listado/{nombre}")
+        public ResponseEntity<?> buscarAlumnoPorNombre(@PathVariable String nombre) {
+            List<Alumno> alumnos = alumnoService.findByNombres(nombre);
             return ResponseEntity.status(200).body(alumnos);
+        }
+
+        @PostMapping("/api/v1/alumno")
+        public ResponseEntity<?> guardarAlumno(@RequestBody Alumno alumno) {
+        Alumno alumnoGuardado = alumnoService.save(alumno);
+        return ResponseEntity.status(201).body(alumnoGuardado);
         }
     }

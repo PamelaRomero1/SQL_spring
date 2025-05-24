@@ -25,14 +25,21 @@ public class AlumnoService {
     public Alumno findById(Integer id) {
         return alumnoRepository.findById(id).orElse(null);
     }
+
     public void delete(Integer id) {
         alumnoRepository.deleteById(id);
     }
     //Metodo para buscar por correo
+
     public Alumno findByCorreo(String correo) {
         return alumnoRepository.findByCorreo(correo);
     }
+
     public List<Alumno> findByNombres(String nombres) {
         return alumnoRepository.findByNombres(nombres);
+    }
+
+    public Alumno save(Alumno alumno) {
+        return alumnoRepository.save(alumno);
     }
 }
